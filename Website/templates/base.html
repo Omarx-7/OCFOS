@@ -1,0 +1,24 @@
+<!--This acts as the base template to build on top for the rest of the html files -->
+<!DOCTYPE html>
+<html lang="en"> <!-- Initialise the html file - we end the entire file w the corresponding </html> -->
+<head> <!-- Tabname and non-displayed info-->
+    <meta charset="UTF-8"> <!-- <meta> precedes data and info to be passed and handled by page--><!-- UTF-8: Use of most characters-->
+    <title>OCF</title>
+    <!-- CSS Framework: Bootstrap (CDN, Content Delivery Network - a users browser downloads Bootstrap from server closest to them - Website loads much faster.) -->
+ <!--<link used to link external resource files, like stylesheets=CSS: 'Here are the style rules for the page-->   <link
+    rel="stylesheet"
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script> <!-- CSS in header to ensure the content loads quicker than JS (in body)-->
+    <!-- tells the browser to take all the styling rules from the Bootstrap CSS file and apply them to the elements of the page | <link is self-closing-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--name='viewport' specifies user's visible area, content='width=device-width' adjusts scale per device-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='GIcon.css') }}"> <!--Provides access  for the icon across all pages -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='Return.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='Profilepicturecontainer.css') }}">
+</head> <!-- End of head section-->
+<body> <!-- Start of body -->
+{% block content %} {% endblock %}
+<!--<script used to embed executable scripts like JS: 'Here is the code to run' -->
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+    </script>
+</body> <!-- End of body section-->
+</html> <!-- End of html doc-->

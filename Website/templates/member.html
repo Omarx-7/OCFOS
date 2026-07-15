@@ -1,0 +1,210 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+
+    <header>
+
+        <h1>Member Dashboard</h1>
+
+        <a href="{{ url_for('views.home') }}">
+            Back
+        </a>
+
+    </header>
+
+    <hr>
+
+    <section>
+
+        <h2>My Profile</h2>
+
+        <p><strong>Name:</strong> {{ member.name }}</p>
+
+        <p><strong>Email:</strong> {{ member.email }}</p>
+
+        <p><strong>City:</strong> {{ member.city }}</p>
+
+        <p><strong>Domains:</strong> {{ member.domain_tags or "None" }}</p>
+
+        <p>{{ member.bio }}</p>
+
+        <form method="POST"
+              action="{{ url_for('views.toggle_matching') }}">
+
+            <button>
+
+                {% if member.opted_in_to_matching %}
+                    Opted In To Matching
+                {% else %}
+                    Opt In To Matching
+                {% endif %}
+
+            </button>
+
+        </form>
+
+    </section>
+
+    <hr>
+
+    <section>
+
+        <h2>My Projects</h2>
+
+        {% if projects %}
+
+            {% for project in projects %}
+
+                <div class="card">
+
+                    <h3>{{ project.title }}</h3>
+
+                    <p>Domain:
+                        {{ project.domain }}
+                    </p>
+
+                    <p>Stage:
+                        {{ project.stage }}
+                    </p>
+
+                </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <p>No projects.</p>
+
+        {% endif %}
+
+    </section>
+
+    <hr>
+
+    <section>
+
+        <h2>Events</h2>
+
+        {% for event in events %}
+
+            <div class="card">
+
+                <h3>
+
+                    {{ event.city }}
+
+                    -
+
+                    {{ event.domain }}
+
+                </h3>
+
+                <p>
+
+                    {{ event.date.strftime("%d %b %Y %H:%M") }}
+
+                </p>
+
+                <p>
+
+                    Capacity
+
+                    {{ event.capacity }}
+
+                </p>
+
+                {% if event.id in member_rsvps %}
+
+    <p>
+        Status:
+        <strong>{{ member_rsvps[event.id].status }}</strong>
+    </p>
+
+    <form method="POST"
+          action="{{ url_for('views.cancel_rsvp', event_id=event.id) }}">
+
+        <button>
+            Cancel RSVP
+        </button>
+
+    </form>
+
+{% else %}
+
+    <form method="POST"
+          action="{{ url_for('views.rsvp', event_id=event.id) }}">
+
+        <button>
+            Register
+        </button>
+
+    </form>
+
+{% endif %}
+
+            </div>
+
+        {% endfor %}
+
+    </section>
+
+    <hr>
+
+    <section>
+
+        <h2>Connections</h2>
+
+        <a href="{{ url_for('views.recommendations') }}">
+
+            View Recommendations
+
+        </a>
+
+    </section>
+
+</div>
+
+<style>
+
+.container{
+
+    width:85%;
+    margin:auto;
+    font-family:Arial;
+}
+
+header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.card{
+
+    border:1px solid #ccc;
+
+    padding:15px;
+
+    margin-bottom:15px;
+
+    border-radius:6px;
+
+}
+
+button{
+
+    padding:8px 18px;
+
+    cursor:pointer;
+
+}
+
+</style>
+
+{% endblock %}

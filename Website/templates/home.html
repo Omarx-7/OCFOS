@@ -1,0 +1,148 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="split-screen-container">
+
+    <div class="left-panel">
+        <div class="content-wrapper">
+            <h1 class="heading-text">Get Started</h1>
+
+            <div class="action-buttons">
+                <a href="{{ url_for('views.admin') }}" class="btn-box-wrapper">
+                    <div class="icon"></div>
+                    <h3 class="nav-text">Admin</h3>
+                </a>
+
+                <a href="{{ url_for('views.member') }}" class="btn-box-wrapper">
+                    <div class="iconreverse"></div>
+                    <h3 class="nav-text">Member</h3>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="right-panel">
+        <img src="{{ url_for('static', filename='greenbackground.png') }}" alt="Background">
+    </div>
+
+</div>
+
+<style>
+    /* Reset and force full viewport lock */
+    html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+        font-family: sans-serif;
+    }
+
+    /* Master layout splitting the screen perfectly */
+    .split-screen-container {
+        display: flex;
+        width: 100vw;
+        height: 100vh;
+    }
+
+    /* Left panel takes up roughly 35% width */
+    .left-panel {
+        flex: 0 0 35%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #fff;
+        padding: 2rem;
+        box-sizing: border-box;
+    }
+
+    /* Right panel takes up the remaining 65% space */
+    .right-panel {
+        flex: 1;
+        height: 100%;
+        position: relative;
+    }
+
+    /* Makes the background image dynamically cover its entire half */
+    .right-panel img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    /* Wraps content and centers text contents horizontally */
+    .content-wrapper {
+        width: 100%;
+        max-width: 400px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .heading-text {
+        font-size: 3rem;
+        margin-bottom: 2.5rem;
+        font-weight: bold;
+        color: #000;
+    }
+
+    /* Arranges the Admin and Member button zones side-by-side cleanly */
+    .action-buttons {
+        display: flex;
+        gap: 3rem;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+
+    /* Creates a relative stacking context for the box image and text */
+    .btn-box-wrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        transition: transform 0.2s ease;
+    }
+
+    .btn-box-wrapper:hover {
+        transform: scale(1.05);
+    }
+
+    /* Updated to make the text slightly larger and white */
+    .nav-text {
+        position: absolute;
+        margin: 0;
+        font-size: 1.4rem; /* Scaled up from 1.17em */
+        font-weight: bold;
+        color: #ffffff; /* Fallback white color */
+        -webkit-text-fill-color: #ffffff; /* Forces white text fill over the button assets */
+        white-space: nowrap;
+        pointer-events: none; /* Let clicks pass straight through to the link wrapper */
+    }
+
+    /* Mobile & Tablet view: Automatically flips from side-by-side to stacked */
+    @media (max-width: 900px) {
+        .split-screen-container {
+            flex-direction: column-reverse;
+        }
+        .left-panel {
+            flex: 1;
+            padding: 1.5rem;
+        }
+        .right-panel {
+            flex: 1;
+        }
+        .heading-text {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+        }
+        .action-buttons {
+            gap: 2rem;
+        }
+    }
+</style>
+
+{% endblock %}

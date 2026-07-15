@@ -1,0 +1,20 @@
+    .icon {
+            /* Rectangle shape */
+            width: 209px;
+            height: 61px;
+
+            background: linear-gradient(135deg, #c0d6a0, #5e8c3e);
+            border-radius: 15px; /* Adjust for more or less rounding */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+
+        }
+
+.iconreverse {
+            /* Rectangle shape */
+            width: 209px;
+            height: 61px;
+
+            background: linear-gradient(270deg, #c0d6a0, #5e8c3e);
+            border-radius: 15px; /* Adjust for more or less rounding */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+        }
