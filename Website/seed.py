@@ -8,8 +8,6 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-print("DEBUG username:", repr(os.getenv("DB_USERNAME")))
-print("DEBUG password:", repr(os.getenv("DB_PASSWORD")))
 
 # ----------------------------
 # Connect to database
