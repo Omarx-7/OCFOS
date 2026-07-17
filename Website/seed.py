@@ -1,4 +1,4 @@
-# Seed script for the OCF Community Operating System.
+# Seed script for OCF OS
 # Populates member, project, event, rsvp and introduction tables with test data.
 # Safe to run multiple times because it clears existing rows first.
 
