@@ -353,3 +353,4 @@ def recommendations():
     return render_template(
         "recommendations.html",
         recommendations=recommendations
+    )
