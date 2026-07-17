@@ -48,12 +48,6 @@ Demo path
 Home → choose Member or Admin → browse events → RSVP → view connection
 recommendations → request an introduction → Admin approves it.
 
-Running tests
-
-pytest test_app.py
-
-Tests run against an isolated in-memory SQLite database — no live MySQL
-connection needed to run them.
 
 Project structure
 
