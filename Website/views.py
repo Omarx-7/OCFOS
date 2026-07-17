@@ -344,13 +344,6 @@ def recommendations():
             "score": score
         })
 
-        recommendations.append({
-
-            "member": member,
-
-            "score": score
-
-        })
 
     recommendations.sort(
         key=lambda x: x["score"],
